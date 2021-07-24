@@ -27,6 +27,7 @@ router.get('/', (req, res, next) => {
 
 // GET /tweets
 // GET /tweets?username=:username
+// Find tweet by username
 router.get('/', (req, res, next) => {
   const username = req.query.username;
   console.log(req.query);
@@ -39,6 +40,7 @@ router.get('/', (req, res, next) => {
 });
 
 // GET /tweets/:id
+// Find tweet by id
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const tweet = tweets.find((tweet) => {
@@ -64,11 +66,29 @@ router.post('/', (req, res, next) => {
   tweets = [tweet, ...tweets];
   res.status(201).json(tweet);
 });
-// router.put('/:id', (req, res) => {
-//   res.statusCode(201).send('success');
-// });
-// router.delete('/:id', (req, res) => {
-//   res.statusCode(201).send('success');
-// });
+
+// PUT /tweets/:id
+// Update tweet
+router.put('/:id', (req, res) => {
+  const { text } = req.body;
+  const { id } = req.params;
+  const tweet = tweets.find((tweet) => {
+    return tweet.id === id;
+  });
+  if (tweet) {
+    tweet.text = text;
+    res.status(201).json(tweet);
+  } else {
+    res.status(404).json({ message: `Tweet id:${id} not found` });
+  }
+});
+
+// DELETE /tweets/:id
+// Delete tweet
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  tweets = tweets.filter((tweet) => tweet.id !== id);
+  res.sendStatus(204);
+});
 
 export default router;
