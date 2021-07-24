@@ -1,6 +1,6 @@
 import express from 'express';
 
-const tweets = [
+let tweets = [
   {
     id: '1',
     text: 'Please Hire Me',
@@ -44,7 +44,6 @@ router.get('/:id', (req, res, next) => {
   const tweet = tweets.find((tweet) => {
     return tweet.id === id;
   });
-  console.log(tweet);
   if (tweet) {
     res.status(200).json(tweet);
   } else {
@@ -52,14 +51,24 @@ router.get('/:id', (req, res, next) => {
   }
 });
 
-// router.post('/', (req, res) => {
-//   res.statusCode(202).send('success');
-// });
+// POST /tweets
+router.post('/', (req, res, next) => {
+  const { text, name, username } = req.body;
+  const tweet = {
+    id: Date.now().toString(),
+    createdAt: new Date(),
+    text,
+    name,
+    username,
+  };
+  tweets = [tweet, ...tweets];
+  res.status(201).json(tweet);
+});
 // router.put('/:id', (req, res) => {
-//   res.statusCode(202).send('success');
+//   res.statusCode(201).send('success');
 // });
 // router.delete('/:id', (req, res) => {
-//   res.statusCode(202).send('success');
+//   res.statusCode(201).send('success');
 // });
 
 export default router;
