@@ -20,10 +20,13 @@ const tweets = [
 ];
 const router = express.Router();
 
+// GET /tweets
 router.get('/', (req, res, next) => {
   res.status(200).json(tweets);
 });
 
+// GET /tweets
+// GET /tweets?username=:username
 router.get('/', (req, res, next) => {
   const username = req.query.username;
   console.log(req.query);
@@ -34,9 +37,21 @@ router.get('/', (req, res, next) => {
     : tweets;
   res.status(200).json(data);
 });
-// router.get('/:id', (req, res, next) => {
-//   res.statusCode(200).send('Tweets');
-// });
+
+// GET /tweets/:id
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const tweet = tweets.find((tweet) => {
+    return tweet.id === id;
+  });
+  console.log(tweet);
+  if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    res.status(404).json({ message: `Tweet id:${id} not found` });
+  }
+});
+
 // router.post('/', (req, res) => {
 //   res.statusCode(202).send('success');
 // });
