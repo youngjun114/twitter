@@ -1,27 +1,11 @@
 import express from 'express';
+import * as tweetRepository from '../data/tweet.js';
 
-let tweets = [
-  {
-    id: '1',
-    text: 'Please Hire Me',
-    createdAt: Date.now().toString(),
-    name: 'Youngjun',
-    username: 'youngjun',
-    url: 'https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper.png',
-  },
-  {
-    id: '2',
-    text: 'Hello world',
-    createdAt: Date.now().toString(),
-    name: 'Bob',
-    username: 'bob',
-    url: 'https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper.png',
-  },
-];
 const router = express.Router();
 
 // GET /tweets
 router.get('/', (req, res, next) => {
+  const tweets = tweetRepository.getAll();
   res.status(200).json(tweets);
 });
 
@@ -30,12 +14,9 @@ router.get('/', (req, res, next) => {
 // Find tweet by username
 router.get('/', (req, res, next) => {
   const username = req.query.username;
-  console.log(req.query);
   const data = username
-    ? tweets.filter((tweet) => {
-        username === tweet.username;
-      })
-    : tweets;
+    ? tweetRepository.getAllByUsername(username)
+    : tweetRepository.getAll();
   res.status(200).json(data);
 });
 
@@ -43,9 +24,7 @@ router.get('/', (req, res, next) => {
 // Find tweet by id
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
-  const tweet = tweets.find((tweet) => {
-    return tweet.id === id;
-  });
+  const tweet = tweetRepository.getById(id);
   if (tweet) {
     res.status(200).json(tweet);
   } else {
@@ -56,14 +35,7 @@ router.get('/:id', (req, res, next) => {
 // POST /tweets
 router.post('/', (req, res, next) => {
   const { text, name, username } = req.body;
-  const tweet = {
-    id: Date.now().toString(),
-    createdAt: new Date(),
-    text,
-    name,
-    username,
-  };
-  tweets = [tweet, ...tweets];
+  const tweet = tweetRepository.create(text, name, username);
   res.status(201).json(tweet);
 });
 
@@ -72,11 +44,8 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res) => {
   const { text } = req.body;
   const { id } = req.params;
-  const tweet = tweets.find((tweet) => {
-    return tweet.id === id;
-  });
+  const tweet = tweetRepository.update(id, text);
   if (tweet) {
-    tweet.text = text;
     res.status(201).json(tweet);
   } else {
     res.status(404).json({ message: `Tweet id:${id} not found` });
@@ -87,7 +56,7 @@ router.put('/:id', (req, res) => {
 // Delete tweet
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  tweets = tweets.filter((tweet) => tweet.id !== id);
+  tweetRepository.remove(id);
   res.sendStatus(204);
 });
 
