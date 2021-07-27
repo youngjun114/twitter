@@ -8,7 +8,7 @@ export async function getTweets(req, res) {
   res.status(200).json(data);
 }
 
-export async function getTweet(req, res, next) {
+export async function getTweet(req, res) {
   const { id } = req.params;
   const tweet = await tweetRepository.getById(id);
   if (tweet) {
@@ -18,9 +18,9 @@ export async function getTweet(req, res, next) {
   }
 }
 
-export async function createTweet(req, res, next) {
-  const { text, name, username } = req.body;
-  const tweet = await tweetRepository.create(text, name, username);
+export async function createTweet(req, res) {
+  const { text, userId } = req.body;
+  const tweet = await tweetRepository.create(text, userId);
   res.status(201).json(tweet);
 }
 
