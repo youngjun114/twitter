@@ -1,0 +1,11 @@
+:root {
+  --color-primary-blue: hsl(203, 89%, 53%);
+  --color-primary-black: hsl(210, 13%, 9%);
+  --color-primary-white: #ffffff;
+  --color-secondary-dark-gray: hsl(207, 14%, 46%);
+  --color-secondary-light-gray: hsl(205, 16%, 71%);
+  --color-secondary-extra-light-gray: hsl(205, 16%, 71%);
+
+  --color-blue-button-hover: hsl(203, 89%, 40%);
+  --color-dark-gray-button-hover: hsl(207, 14%, 60%);
+}

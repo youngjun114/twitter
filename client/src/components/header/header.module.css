@@ -1,0 +1,55 @@
+@import '../../style/color.css';
+
+.header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  height: 56px;
+  width: 56px;
+}
+
+.username {
+  margin-left: 2em;
+  font-size: 1.6rem;
+  color: #989898;
+}
+
+.button {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 5px;
+  margin-right: 1em;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+  background-color: var(--color-secondary-dark-gray);
+}
+
+.button:hover {
+  background-color: var(--color-dark-gray-button-hover);
+}
+
+.btn_logout {
+  width: 10rem;
+  height: 5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: #1da1f2;
+  border-radius: 5px;
+  color: white;
+}
+
+.btn_logout:hover {
+  background-color: var(--color-blue-button-hover);
+}
