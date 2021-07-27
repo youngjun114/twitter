@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--color-secondary-light-gray);
   padding: 2em;
 }
 
@@ -22,7 +23,7 @@
 .username {
   margin-left: 2em;
   font-size: 1.6rem;
-  color: #989898;
+  color: var(--color-secondary-dark-gray);
 }
 
 .button {

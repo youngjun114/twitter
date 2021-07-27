@@ -1,0 +1,35 @@
+@import '../../style/color.css';
+
+.container {
+  display: flex;
+  padding: 2em;
+  margin: 2em 0;
+  border: 1px solid #7e7e7e;
+  border-radius: 20px;
+  background-color: var(--color-secondary-extra-light-gray);
+  min-height: 120px;
+}
+
+.avatar {
+  height: 56px;
+  width: 56px;
+  margin: 0 2em;
+  object-fit: contain;
+}
+
+.content {
+  width: 100%;
+}
+
+.username {
+  display: inline;
+  font-size: 1.6rem;
+}
+
+.time_stamp {
+  font-size: 1.4rem;
+}
+
+.text {
+  font-size: 1.6rem;
+}
