@@ -1,6 +1,6 @@
 import './App.css';
 
-function App() {
+function App({ tweetService }) {
   return <h1> App</h1>;
 }
 
