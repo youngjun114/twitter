@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import 'express-async-error';
 import tweetsRouter from './router/tweets.js';
-import usersRouter from './router/users.js';
+import authRouter from './router/auth.js';
 
 const app = express();
 app.use(express.json());
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 
 app.use('/tweets', tweetsRouter);
-app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 // Error handler for invalid url
 app.use((req, res, next) => {
