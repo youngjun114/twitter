@@ -1,0 +1,54 @@
+@import '../../style/color.css';
+
+.background {
+  position: relative;
+  background-color: var(--color-primary-blue);
+  min-width: 100vw;
+  min-height: 100vh;
+  color: var(--color-primary-white);
+}
+
+.logo {
+  position: absolute;
+  object-fit: contain;
+  height: 40rem;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-120%, -50%);
+}
+
+.content {
+  position: absolute;
+  height: 40rem;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}
+
+.title {
+  font-size: 10rem;
+}
+
+.sub_title {
+  font-size: 8rem;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 5em;
+}
+
+.login,
+.signup {
+  width: 20rem;
+  height: 7.5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-right: 2em;
+  padding: 0 1em;
+  border-radius: 20px;
+  background-color: #6cd1ff;
+  color: white;
+}
