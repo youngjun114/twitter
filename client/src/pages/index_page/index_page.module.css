@@ -1,30 +1,29 @@
 @import '../../style/color.css';
 
 .background {
-  position: relative;
   background-color: var(--color-primary-blue);
   min-width: 100vw;
   min-height: 100vh;
   color: var(--color-primary-white);
+  display: flex;
+}
+
+.wrapper {
+  margin: auto;
+  display: flex;
 }
 
 .logo {
-  position: absolute;
   object-fit: contain;
   height: 40rem;
-  width: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-120%, -50%);
 }
 
 .content {
-  position: absolute;
   height: 40rem;
-  width: auto;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%);
+  margin-left: 7.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
@@ -32,7 +31,7 @@
 }
 
 .sub_title {
-  font-size: 8rem;
+  font-size: 7.5rem;
 }
 
 .buttons {
@@ -49,6 +48,23 @@
   margin-right: 2em;
   padding: 0 1em;
   border-radius: 20px;
-  background-color: #6cd1ff;
-  color: white;
+  color: var(--color-primary-white);
+  text-align: center;
+  line-height: 7.5rem;
+}
+
+.login {
+  background-color: hsl(43, 89%, 53%);
+}
+
+.signup {
+  background-color: hsl(23, 89%, 53%);
+}
+
+.login:hover {
+  background-color: hsl(43, 89%, 60%);
+}
+
+.signup:hover {
+  background-color: hsl(23, 89%, 60%);
 }

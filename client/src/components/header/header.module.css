@@ -1,7 +1,8 @@
 @import '../../style/color.css';
+@import '../../style/size.css';
 
 .header {
-  height: 80px;
+  height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,8 +17,8 @@
 }
 
 .logo {
-  height: 56px;
-  width: 56px;
+  height: var(--header-logo-height);
+  width: var(--header-logo-width);
 }
 
 .username {
