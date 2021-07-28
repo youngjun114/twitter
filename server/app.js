@@ -5,8 +5,10 @@ import helmet from 'helmet';
 import 'express-async-error';
 import tweetsRouter from './router/tweets.js';
 import authRouter from './router/auth.js';
+import { config } from './config.js';
 
 const app = express();
+
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
@@ -25,4 +27,4 @@ app.use((error, req, res, next) => {
   res.sendStatus(500); // Internal Server Error
 });
 
-app.listen(8080);
+app.listen(config.host.port);
