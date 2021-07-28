@@ -23,7 +23,38 @@ button {
 }
 
 input {
+  width: 100%;
   outline: none;
+  height: var(--login-input-height);
+  padding: 0 1em;
+  font-size: 1.6rem;
+  margin-bottom: 2em;
+  border: 2px solid var(--color-secondary-light-gray);
+  border-radius: 5px;
+}
+
+input:focus {
+  border-color: var(--color-primary-blue);
+}
+
+label {
+  position: absolute;
+  transform: translateY(100%);
+  pointer-events: none;
+  font-size: 1.6rem;
+  margin-left: 1.25em;
+  transition: 150ms ease-in;
+}
+
+input:focus ~ label {
+  transform: translateY(20%);
+  font-size: 1.2rem;
+  color: var(--color-primary-blue);
+}
+
+input:not(:placeholder-shown) ~ label {
+  transform: translateY(20%);
+  font-size: 1.2rem;
 }
 
 a {

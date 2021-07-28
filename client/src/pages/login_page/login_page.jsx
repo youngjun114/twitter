@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './login_page.module.css';
 
 const LoginPage = () => {
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const formRef = useRef();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -13,23 +21,25 @@ const LoginPage = () => {
           />
           <h1 className={styles.title}>Log in to Twitter </h1>
         </div>
-        <form className={styles.form}>
-          <input
-            className={styles.input}
-            placeholder='Username'
-            required
-          ></input>
-          <input
-            className={styles.input}
-            placeholder='Password'
-            required
-          ></input>
+        <form ref={formRef} className={styles.form} onSubmit={handleLogin}>
+          <div className={styles.input_container}>
+            <input ref={usernameRef} type='text' placeholder=' ' required />
+            <label>Username</label>
+          </div>
+          <div className={styles.input_container}>
+            <input ref={passwordRef} type='password' placeholder=' ' required />
+            <label>Password</label>
+          </div>
+
           <button className={styles.button} type='submit'>
             Log In
           </button>
         </form>
         <span className={styles.link}>
-          Don't have an account? <a className={styles.signup} href='/signup'>Sign up</a>
+          Don't have an account?
+          <a className={styles.signup} href='/signup'>
+            Sign up
+          </a>
         </span>
       </div>
     </div>
