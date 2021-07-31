@@ -1,32 +1,25 @@
-let users = [
-  {
-    id: '1',
-    username: 'youngjun',
-    password: '$2b$12$tlOee/pN9vKu1v4MMPuKceXVPr5fUOXrlku4SLMN5/dul485z1y6e',
-    name: 'Youngjun Woo',
-    email: 'youngjun_92@hotmail.com',
-    url: '',
-  },
-  {
-    id: '2',
-    username: 'bob',
-    password: '$2b$12$o4ZsPfR1s2AHFCGupfSghOenkDAbajtr8fnsCxAnVzO8woWNW1Wsm',
-    name: 'Bob Kim',
-    email: 'bobk@gmail.com',
-    url: '',
-  },
-];
+import Mongoose from 'mongoose';
+import { useVirtualId } from '../database/database.js';
+
+const userSchema = new Mongoose.Schema({
+  username: { type: String, required: true },
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  url: String,
+});
+
+useVirtualId(userSchema);
+const User = Mongoose.model('User', userSchema);
 
 export async function findByUsername(username) {
-  return users.find((user) => user.username === username);
+  return User.findOne({ username });
 }
 
 export async function findById(id) {
-  return users.find((user) => user.id === id);
+  return User.findById(id);
 }
 
 export async function createUser(user) {
-  const created = { ...user, id: Date.now().toString() };
-  users.push(created);
-  return created.id;
+  return new User(user).save().then((data) => data.id);
 }

@@ -14,12 +14,12 @@ const Tweets = ({ tweetService }) => {
   }, [tweetService]);
 
   return (
-    <section className={styles.container}>
+    <>
       <TweetAddForm />
       {tweets.map((tweet) => {
         return <TweetCard key={tweet.id} tweet={tweet} />;
       })}
-    </section>
+    </>
   );
 };
 

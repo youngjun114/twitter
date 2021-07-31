@@ -1,0 +1,30 @@
+@import '../../style/color.css';
+@import '../../style/size.css';
+
+.sidebar_container {
+  display: flex;
+  flex-direction: column;
+  padding-right: 24px;
+  color: var(--color-primary-black);
+}
+
+.sidebar_icon {
+  font-size: var(--sidebar-icon-size);
+}
+
+.sidebar_logo {
+  color: var(--color-primary-blue);
+}
+
+.sidebar_item {
+  height: var(--sidebar-item-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar_title {
+  margin-left: 1em;
+  font-weight: bold;
+  font-size: 2rem;
+}

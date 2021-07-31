@@ -1,0 +1,8 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(415px, 600px) 1fr;
+}
+
+.left {
+  justify-self: end;
+}
