@@ -9,4 +9,6 @@
 
   --color-blue-button-hover: hsl(203, 89%, 40%);
   --color-dark-gray-button-hover: hsl(207, 14%, 60%);
+
+  --color-card-border: rgb(239, 243, 244);
 }

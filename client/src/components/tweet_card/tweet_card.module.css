@@ -3,9 +3,7 @@
 .container {
   display: flex;
   padding: 2em;
-  margin: 2em 0;
-  border: 1px solid #d3d3d3;
-  border-radius: 10px;
+  border: 1px solid var(--color-card-border);
   min-height: 120px;
 }
 
@@ -20,13 +18,15 @@
   width: 100%;
 }
 
-.username {
-  display: inline;
+.name {
+  display: inline-block;
   font-size: 1.6rem;
+  margin-bottom: 0.5em;
 }
 
-.time_stamp {
+.username {
   font-size: 1.4rem;
+  margin-left: 0.25em;
 }
 
 .text {
