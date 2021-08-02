@@ -1,61 +1,84 @@
 import {
   createContext,
-  useEffect,
-  useState,
+  createRef,
   useCallback,
+  useContext,
+  useEffect,
+  useImperativeHandle,
   useMemo,
+  useState,
 } from 'react';
-import { useHistory } from 'react-router-dom';
+import LoginPage from '../pages/login_page/login_page';
 
-export const AuthContext = createContext();
+const AuthContext = createContext({});
 
-export const AuthProvider = ({ authService, children }) => {
+const contextRef = createRef();
+
+export function AuthProvider({ authService, authErrorEventBus, children }) {
   const [user, setUser] = useState(undefined);
-  const history = useHistory();
+
+  useImperativeHandle(contextRef, () => (user ? user.token : undefined));
 
   useEffect(() => {
-    authService
-      .me()
-      .then(setUser)
-      .then(() => history.push('/home'))
-      .catch(console.error);
+    authErrorEventBus.listen((err) => {
+      console.log(err);
+      setUser(undefined);
+    });
+  }, [authErrorEventBus]);
+
+  useEffect(() => {
+    authService.me().then(setUser).catch(console.error);
   }, [authService]);
 
   const signUp = useCallback(
-    async (username, password, name, email, url) => {
+    async (username, password, name, email, url) =>
       authService
         .signup(username, password, name, email, url)
-        .then((user) => setUser(user));
-    },
+        .then((user) => setUser(user)),
     [authService]
   );
 
-  const logIn = useCallback(async (username, password) => {
-    authService //
-      .login(username, password)
-      .then((user) => {
-        setUser(user);
-        console.log(`${username} logged in successfully`);
-      });
-  });
+  const logIn = useCallback(
+    async (username, password) =>
+      authService.login(username, password).then((user) => setUser(user)),
+    [authService]
+  );
 
-  const logOut = useCallback(async () => {
-    authService.logout();
-    console.log('Logged out successfully');
-    setUser(undefined);
-  });
+  const logout = useCallback(
+    async () => authService.logout().then(() => setUser(undefined)),
+    [authService]
+  );
 
   const context = useMemo(
     () => ({
       user,
       signUp,
       logIn,
-      logOut,
+      logout,
     }),
-    [user, signUp, logIn, logOut]
+    [user, signUp, logIn, logout]
   );
 
   return (
-    <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={context}>
+      {user ? (
+        children
+      ) : (
+        <LoginPage handleLogin={logIn} handleSignUp={signUp} />
+      )}
+    </AuthContext.Provider>
   );
-};
+}
+
+export class AuthErrorEventBus {
+  listen(callback) {
+    this.callback = callback;
+  }
+  notify(error) {
+    this.callback(error);
+  }
+}
+
+export default AuthContext;
+export const fetchToken = () => contextRef.current;
+export const useAuth = () => useContext(AuthContext);

@@ -12,12 +12,6 @@ function App({ tweetService }) {
         <Route exact path='/'>
           <IndexPage />
         </Route>
-        <Route path='/login'>
-          <LoginPage />
-        </Route>
-        <Route path='/signup'>
-          <SignupPage />
-        </Route>
         <Route path='/home'>
           <HomePage tweetService={tweetService} />
         </Route>

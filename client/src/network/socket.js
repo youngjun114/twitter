@@ -4,11 +4,11 @@ export default class Socket {
   constructor(baseURL, getAccessToken) {
     // create socket with authentication token
     this.io = socket(baseURL, {
-      auth: (callback) => callback({ token: getAccessToken }),
+      auth: (cb) => cb({ token: getAccessToken() }),
     });
 
     // handle error
-    this.io.on('connection_error', (error) => {
+    this.io.on('connect_error', (error) => {
       console.log('socket error', error.message);
     });
   }
