@@ -21,12 +21,12 @@ export async function getAll() {
 }
 
 export async function getAllByUsername(username) {
-  console.log(`username: ${username}`);
+  console.log(`data/tweet.js username: ${username}`);
   return Tweet.find({ username }).sort({ createdAt: -1 });
 }
 
 export async function getById(id) {
-  console.log(`id: ${id}`);
+  console.log(`data/tweet.js id: ${id}`);
   return Tweet.findById(id);
 }
 

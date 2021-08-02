@@ -1,11 +1,39 @@
-import React from 'react';
-import { useRef } from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
+import { AuthContext } from '../../context/auth_context';
 import styles from './signup_page.module.css';
 
 const SignupPage = () => {
+  const { signUp } = useContext(AuthContext);
+  const history = useHistory();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [url, setUrl] = useState('');
+
   const handleSignup = (e) => {
     e.preventDefault();
+    signUp(username, password, name, email, url) //
+      .then(history.push('/home'));
   };
+
+  const handleOnChangeUsername = (e) => {
+    setUsername(e.currentTarget.value);
+  };
+  const handleOnChangePassword = (e) => {
+    setPassword(e.currentTarget.value);
+  };
+  const handleOnChangeName = (e) => {
+    setName(e.currentTarget.value);
+  };
+  const handleOnChangeEmail = (e) => {
+    setEmail(e.currentTarget.value);
+  };
+  const handleOnChangeUrl = (e) => {
+    setUrl(e.currentTarget.value);
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -19,19 +47,52 @@ const SignupPage = () => {
         </div>
         <form className={styles.form} onSubmit={handleSignup}>
           <div className={styles.input_container}>
-            <input type='text' placeholder=' ' required />
+            <input
+              type='text'
+              name='username'
+              onChange={handleOnChangeUsername}
+              placeholder=' '
+              required
+            />
             <label>Username</label>
           </div>
           <div className={styles.input_container}>
-            <input type='password' placeholder=' ' required />
+            <input
+              type='password'
+              name='password'
+              onChange={handleOnChangePassword}
+              placeholder=' '
+              required
+            />
             <label>Password</label>
           </div>
           <div className={styles.input_container}>
-            <input type='email' placeholder=' ' required />
+            <input
+              type='text'
+              name='name'
+              onChange={handleOnChangeName}
+              placeholder=' '
+              required
+            />
+            <label>Name</label>
+          </div>
+          <div className={styles.input_container}>
+            <input
+              type='email'
+              name='email'
+              onChange={handleOnChangeEmail}
+              placeholder=' '
+              required
+            />
             <label>Email</label>
           </div>
           <div className={styles.input_container}>
-            <input type='url' placeholder=' ' />
+            <input
+              type='url'
+              name='url'
+              onChange={handleOnChangeUrl}
+              placeholder=' '
+            />
             <label>Image URL</label>
           </div>
           <button className={styles.button} type='submit'>

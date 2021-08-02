@@ -22,7 +22,7 @@
 }
 
 .logo {
-  height: var(--header-logo-height);
+  height: var(--login-header-logo-height);
 }
 
 .title {

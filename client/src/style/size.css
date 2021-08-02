@@ -1,5 +1,7 @@
 :root {
   --header-height: 56px;
+  --login-header-logo-height: 56px;
+  --login-header-logo-width: 56px;
   --sidebar-icon-size: 30px;
   --sidebar-item-height: 56px;
   --login-input-height: 56px;

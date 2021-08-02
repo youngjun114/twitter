@@ -28,3 +28,13 @@
   font-weight: bold;
   font-size: 2rem;
 }
+
+.log_out {
+  background-color: var(--color-secondary-red);
+  color: var(--color-primary-white);
+  height: calc(var(--sidebar-item-height) * 0.75);
+  width: 100%;
+  border-radius: 25px;
+  font-size: 2rem;
+  padding: 0 1em;
+}

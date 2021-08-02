@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import styles from './index_page.module.css';
 
 const IndexPage = () => {

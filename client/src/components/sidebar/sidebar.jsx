@@ -4,19 +4,19 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaHome, FaSearch, FaTwitter } from 'react-icons/fa';
 import { VscAccount } from 'react-icons/vsc';
 
-const Sidebar = () => {
+const Sidebar = ({ handleLogOut }) => {
   return (
     <>
       <ul className={styles.sidebar_container}>
         <li>
-          <Link to='/tweets' className={styles.sidebar_item}>
+          <Link to='/home' className={styles.sidebar_item}>
             <FaTwitter
               className={`${styles.sidebar_icon} ${styles.sidebar_logo}`}
             />
           </Link>
         </li>
         <li>
-          <NavLink to='/' className={styles.sidebar_item}>
+          <NavLink to='/home' className={styles.sidebar_item}>
             <FaHome className={styles.sidebar_icon} />
             <span className={styles.sidebar_title}>Home</span>
           </NavLink>
@@ -32,6 +32,11 @@ const Sidebar = () => {
             <VscAccount className={styles.sidebar_icon} />
             <span className={styles.sidebar_title}>Account</span>
           </NavLink>
+        </li>
+        <li>
+          <button className={styles.log_out} onClick={handleLogOut}>
+            Log Out
+          </button>
         </li>
       </ul>
     </>

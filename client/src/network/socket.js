@@ -4,7 +4,7 @@ export default class Socket {
   constructor(baseURL, getAccessToken) {
     // create socket with authentication token
     this.io = socket(baseURL, {
-      auth: (cb) => cb({ token: getAccessToken }),
+      auth: (callback) => callback({ token: getAccessToken }),
     });
 
     // handle error
@@ -16,6 +16,7 @@ export default class Socket {
   onSync(event, callback) {
     if (!this.io.connected) {
       this.io.connect();
+      console.log('socket connected');
     }
     this.io.on(event, (message) => callback(message));
     return () => this.io.off(event);

@@ -1,13 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/auth_context';
 import styles from './login_page.module.css';
 
 const LoginPage = () => {
-  const usernameRef = useRef();
-  const passwordRef = useRef();
-  const formRef = useRef();
+  const { logIn } = useContext(AuthContext);
+  const history = useHistory();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
+    logIn(username, password).then(() => history.push('/home'));
+  };
+
+  const handleUsername = (e) => {
+    setUsername(e.currentTarget.value);
+  };
+  const handlePassword = (e) => {
+    setPassword(e.currentTarget.value);
   };
 
   return (
@@ -21,13 +32,23 @@ const LoginPage = () => {
           />
           <h1 className={styles.title}>Log in to Twitter </h1>
         </div>
-        <form ref={formRef} className={styles.form} onSubmit={handleLogin}>
+        <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.input_container}>
-            <input ref={usernameRef} type='text' placeholder=' ' required />
+            <input
+              type='text'
+              placeholder=' '
+              onChange={handleUsername}
+              required
+            />
             <label>Username</label>
           </div>
           <div className={styles.input_container}>
-            <input ref={passwordRef} type='password' placeholder=' ' required />
+            <input
+              type='password'
+              placeholder=' '
+              onChange={handlePassword}
+              required
+            />
             <label>Password</label>
           </div>
 

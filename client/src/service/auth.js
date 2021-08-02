@@ -20,6 +20,7 @@ export default class AuthService {
   }
 
   async login(username, password) {
+    // data = {token, username}
     const data = await this.http.fetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),

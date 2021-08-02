@@ -18,7 +18,7 @@ const validateTweet = [
 // GET /tweets
 // GET /tweets?username=:username
 // Find tweet by username
-router.get('/', tweetController.getTweets);
+router.get('/', isAuth, tweetController.getTweets);
 
 // GET /tweets/:id
 // Find tweet by id
