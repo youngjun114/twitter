@@ -10,10 +10,10 @@ const IndexPage = () => {
           <h1 className={styles.title}>Twitter</h1>
           <h1 className={styles.sub_title}>It's what's happening</h1>
           <div className={styles.buttons}>
-            <a href='/login' className={styles.login}>
+            <a href='/home' className={styles.login}>
               Log In
             </a>
-            <a href='/signup' className={styles.signup}>
+            <a href='/home' className={styles.signup}>
               Sign Up
             </a>
           </div>

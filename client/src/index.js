@@ -8,7 +8,7 @@ import TweetService from './service/tweet';
 import AuthService from './service/auth';
 import TokenStorage from './db/token';
 import Socket from './network/socket';
-import { AuthErrorEventBus, AuthProvider } from './context/auth_context';
+import { AuthErrorEventBus } from './context/auth_context';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 const tokenStorage = new TokenStorage();
@@ -21,12 +21,11 @@ const tweetService = new TweetService(httpClient, tokenStorage, socketClient);
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider
-        authService={authService}
+      <App
+        tweetService={tweetService}
         authErrorEventBus={authErrorEventBus}
-      >
-        <App tweetService={tweetService} />
-      </AuthProvider>
+        authService={authService}
+      />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

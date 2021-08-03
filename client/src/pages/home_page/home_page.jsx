@@ -28,10 +28,10 @@ const HomePage = ({ tweetService }) => {
           <Header username={user.username} handleLogOut={handleLogOut} />
         </div>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/home'>
             <Tweets tweetService={tweetService} />
           </Route>
-          <Route path='/:username'>
+          <Route path='/home/:username'>
             <TweetsByUsername tweetService={tweetService} />
           </Route>
         </Switch>
