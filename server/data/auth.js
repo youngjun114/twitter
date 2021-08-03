@@ -17,7 +17,6 @@ export async function findByUsername(username) {
 }
 
 export async function findById(id) {
-  console.log(`data/auth findById: ${id}`);
   return User.findById(id);
 }
 

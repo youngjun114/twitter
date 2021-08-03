@@ -21,27 +21,22 @@ export async function getAll() {
 }
 
 export async function getAllByUsername(username) {
-  console.log(`data/tweet.js username: ${username}`);
   return Tweet.find({ username }).sort({ createdAt: -1 });
 }
 
 export async function getById(id) {
-  console.log(`data/tweet.js id: ${id}`);
   return Tweet.findById(id);
 }
 
 export async function create(text, userId) {
-  console.log(`data/tweet text: ${text}`);
-  console.log(`data/tweet userId: ${userId}`);
-  return UserRepository.findById(userId).then((user) => {
-    console.log(`user: ${user}`);
+  return UserRepository.findById(userId).then((user) =>
     new Tweet({
       text,
       userId,
       name: user.name,
       username: user.username,
-    }).save();
-  });
+    }).save()
+  );
 }
 
 export async function update(id, text) {

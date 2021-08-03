@@ -1,5 +1,5 @@
 import express from 'express';
-import 'express-async-error';
+import {} from 'express-async-error';
 import { body } from 'express-validator';
 import { validate } from '../middleware/validator.js';
 import { isAuth } from '../middleware/auth.js';
@@ -16,6 +16,7 @@ const validateCredential = [
     .trim()
     .isLength({ min: 5 })
     .withMessage('password should be at least 5 characters'),
+  validate,
 ];
 
 const validateSignup = [

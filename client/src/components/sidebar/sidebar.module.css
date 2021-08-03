@@ -2,10 +2,12 @@
 @import '../../style/size.css';
 
 .sidebar_container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   padding-right: 24px;
   color: var(--color-primary-black);
+  transform: translateX(-100%);
 }
 
 .sidebar_icon {

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './sidebar.module.css';
 import { Link, NavLink } from 'react-router-dom';
 import { FaHome, FaSearch, FaTwitter } from 'react-icons/fa';
 import { VscAccount } from 'react-icons/vsc';
 
-const Sidebar = ({ handleLogOut }) => {
+const Sidebar = memo(({ handleLogOut }) => {
   return (
     <>
       <ul className={styles.sidebar_container}>
@@ -41,6 +41,6 @@ const Sidebar = ({ handleLogOut }) => {
       </ul>
     </>
   );
-};
+});
 
-export default Sidebar;
+export default memo(Sidebar);

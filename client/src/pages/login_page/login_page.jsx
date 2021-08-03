@@ -53,18 +53,21 @@ const LoginPage = ({ handleLogin, handleSignUp }) => {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Banner text={text} isAlert={isAlert} />
           <img
             className={styles.logo}
             src='images/header_logo.png'
             alt='logo'
           />
-          <h1 className={styles.title}>Log in to Twitter </h1>
+          <h1 className={styles.title}>
+            {isSignUp ? 'Create an account' : 'Log in to Twitter'}
+          </h1>
         </div>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <Banner text={text} isAlert={isAlert} />
+        <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
           <div className={styles.input_container}>
             <input
               type='text'
+              name='username'
               placeholder=' '
               onChange={handleOnChange}
               required
@@ -74,6 +77,7 @@ const LoginPage = ({ handleLogin, handleSignUp }) => {
           <div className={styles.input_container}>
             <input
               type='password'
+              name='password'
               placeholder=' '
               onChange={handleOnChange}
               required
@@ -119,9 +123,9 @@ const LoginPage = ({ handleLogin, handleSignUp }) => {
         </form>
         <span className={styles.link}>
           {isSignUp ? 'Already have an account?' : `Don't have an account?`}
-          <a className={styles.signup} onClick={handleClick} href='#'>
+          <button className={styles.signup} onClick={handleClick} href='#'>
             {isSignUp ? 'Log In' : 'Sign Up'}
-          </a>
+          </button>
         </span>
       </div>
     </div>

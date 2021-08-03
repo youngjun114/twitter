@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import * as userRepository from '../data/auth.js';
 import { config } from '../config.js';
+import * as userRepository from '../data/auth.js';
 
 const AUTH_ERROR = { message: 'Authentication Error' };
 
@@ -19,7 +19,7 @@ export const isAuth = async (req, res, next) => {
       return res.status(401).json(AUTH_ERROR);
     }
     req.userId = user.id;
-    req.token = user.token;
+    req.token = token;
     next();
   });
 };

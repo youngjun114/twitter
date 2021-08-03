@@ -1,5 +1,5 @@
-import { getSocketIO } from '../connection/socket.js';
 import * as tweetRepository from '../data/tweet.js';
+import { getSocketIO } from '../connection/socket.js';
 
 export async function getTweets(req, res) {
   const username = req.query.username;
@@ -10,7 +10,7 @@ export async function getTweets(req, res) {
 }
 
 export async function getTweet(req, res) {
-  const { id } = req.params;
+  const id = req.params.id;
   const tweet = await tweetRepository.getById(id);
   if (tweet) {
     res.status(200).json(tweet);
@@ -22,14 +22,13 @@ export async function getTweet(req, res) {
 export async function createTweet(req, res) {
   const { text } = req.body;
   const tweet = await tweetRepository.create(text, req.userId);
-  console.log(`controller/tweet.js userId: ${req.userId}`);
   res.status(201).json(tweet);
   getSocketIO().emit('tweets', tweet);
 }
 
 export async function updateTweet(req, res) {
-  const { text } = req.body;
-  const { id } = req.params;
+  const id = req.params.id;
+  const text = req.body.text;
   // check if the user and tweet's author is same
   const tweet = await tweetRepository.getById(id);
   if (!tweet) {
@@ -43,7 +42,7 @@ export async function updateTweet(req, res) {
 }
 
 export async function deleteTweet(req, res) {
-  const { id } = req.params;
+  const id = req.params.id;
   // check if the user and tweet's author is same
   const tweet = await tweetRepository.getById(id);
   if (!tweet) {

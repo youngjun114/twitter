@@ -2,8 +2,8 @@ import express from 'express';
 import 'express-async-error';
 import { body } from 'express-validator';
 import * as tweetController from '../controller/tweet.js';
-import { validate } from '../middleware/validator.js';
 import { isAuth } from '../middleware/auth.js';
+import { validate } from '../middleware/validator.js';
 
 const router = express.Router();
 

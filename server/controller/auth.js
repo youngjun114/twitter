@@ -1,6 +1,7 @@
-import * as userRepository from '../data/auth.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import 'express-async-error';
+import * as userRepository from '../data/auth.js';
 import { config } from '../config.js';
 
 export async function signup(req, res) {
@@ -17,7 +18,6 @@ export async function signup(req, res) {
     email,
     url,
   });
-  console.log(userId);
   const token = createJwtToken(userId);
   res.status(201).json({ token, username });
 }
@@ -36,18 +36,16 @@ export async function login(req, res) {
   res.status(200).json({ token, username });
 }
 
+function createJwtToken(id) {
+  return jwt.sign({ id }, config.jwt.secretKey, {
+    expiresIn: config.jwt.expiresIn,
+  });
+}
+
 export async function me(req, res) {
   const user = await userRepository.findById(req.userId);
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  res
-    .status(200)
-    .json({ token: req.token, isTokenValid: true, username: user.username });
-}
-
-function createJwtToken(id) {
-  return jwt.sign({ id }, config.jwt.secretKey, {
-    expiresIn: config.jwt.expiresIn,
-  });
+  res.status(200).json({ token: req.token, username: user.username });
 }
