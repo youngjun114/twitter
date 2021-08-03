@@ -2,19 +2,19 @@ import React, { memo } from 'react';
 import moment from 'moment';
 import styles from './tweet_card.module.css';
 import { RiDeleteBin6Line, RiEdit2Line } from 'react-icons/ri';
+import Avatar from '../avatar/avatar';
+import { useAuth } from '../../context/auth_context';
 
 const TweetCard = memo(({ tweet, isAuthor, onDelete, onUpdate }) => {
   const { id, username, name, url, text, createdAt } = tweet;
-
   const formattedCreatedAt = moment(createdAt).fromNow();
-
   const handleDelete = () => {
     onDelete(id);
   };
 
   return (
     <section className={styles.container}>
-      <img src='images/avatar.png' alt='avatar' className={styles.avatar} />
+      <Avatar url={url} />
       <div className={styles.content}>
         <div className={styles.header}>
           <h2 className={styles.name}>{name}</h2>

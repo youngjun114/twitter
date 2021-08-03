@@ -35,6 +35,7 @@ export async function create(text, userId) {
       userId,
       name: user.name,
       username: user.username,
+      url: user.url,
     }).save()
   );
 }
