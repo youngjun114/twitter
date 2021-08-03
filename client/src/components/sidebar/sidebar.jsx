@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import styles from './sidebar.module.css';
 import { Link, NavLink } from 'react-router-dom';
 import { FaHome, FaSearch, FaTwitter } from 'react-icons/fa';
-import { VscAccount } from 'react-icons/vsc';
+import { RiAccountPinBoxFill } from 'react-icons/ri';
 
 const Sidebar = memo(({ handleLogOut }) => {
   return (
@@ -29,7 +29,7 @@ const Sidebar = memo(({ handleLogOut }) => {
         </li>
         <li>
           <NavLink to='/' className={styles.sidebar_item}>
-            <VscAccount className={styles.sidebar_icon} />
+            <RiAccountPinBoxFill className={styles.sidebar_icon} />
             <span className={styles.sidebar_title}>Account</span>
           </NavLink>
         </li>

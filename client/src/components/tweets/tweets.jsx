@@ -16,7 +16,6 @@ const Tweets = memo(({ tweetService, username }) => {
       .getTweets(username)
       .then((tweets) => setTweets([...tweets]))
       .catch(onError);
-    console.log(tweets);
     const stopSync = tweetService.onSync((tweet) => onCreated(tweet));
     return () => stopSync();
   }, [tweetService, username, user]);
@@ -55,14 +54,13 @@ const Tweets = memo(({ tweetService, username }) => {
       {error && <Banner text={error} isAlert={true} transient={true} />}
       <TweetAddForm tweetService={tweetService} onError={onError} />
       {tweets.map((tweet) => {
-        console.log(tweet.username);
         return (
           <TweetCard
             key={tweet.id}
             tweet={tweet}
             isAuthor={tweet.username === user.username}
-            handleDelete={onDelete}
-            handleUpdate={onUpdate}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
           />
         );
       })}

@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  padding: 2em;
+  padding: 1em 2em;
   border: 1px solid var(--color-card-border);
   min-height: 120px;
 }
@@ -14,14 +14,19 @@
   object-fit: contain;
 }
 
+.header {
+  display: flex;
+  align-items: flex-start;
+}
+
 .content {
+  margin-top: 0.75em;
   width: 100%;
 }
 
 .name {
   display: inline-block;
   font-size: 1.6rem;
-  margin-bottom: 0.5em;
 }
 
 .username {
@@ -31,4 +36,30 @@
 
 .text {
   font-size: 1.6rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  gap: 1em;
+}
+
+.btn_edit,
+.btn_delete {
+  background-color: transparent;
+}
+
+.btn_delete:hover {
+  color: var(--color-secondary-red);
+}
+
+.btn_edit:hover {
+  color: var(--color-secondary-green);
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
 }
