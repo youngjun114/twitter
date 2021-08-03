@@ -8,8 +8,12 @@
   --color-secondary-red: hsl(3, 89%, 53%);
   --color-secondary-green: hsl(131, 54%, 40%);
 
+  --color-form-edit-border: hsl(207, 91%, 64%);
+
   --color-blue-button-hover: hsl(203, 89%, 40%);
   --color-dark-gray-button-hover: hsl(207, 14%, 60%);
+  --color-red-button-hover: hsl(3, 89%, 40%);
+  --color-green-button-hover:  hsl(131, 54%, 30%);
 
   --color-card-border: rgb(239, 243, 244);
 }

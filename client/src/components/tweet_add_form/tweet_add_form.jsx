@@ -25,7 +25,7 @@ const TweetAddForm = memo(({ tweetService, onError }) => {
   return (
     <section className={styles.container}>
       <Avatar url={url} />
-      <form className={styles.content} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <textarea
           onChange={handleChange}
           className={styles.tweet_textarea}

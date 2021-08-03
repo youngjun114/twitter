@@ -37,7 +37,7 @@ const Tweets = memo(({ tweetService, username }) => {
       .updateTweet(tweetId, text)
       .then((updated) =>
         setTweets((tweets) =>
-          tweets.map((item) => (item.id === updated.id ? updated : item))
+          tweets.map((tweet) => (tweet.id === updated.id ? updated : tweet))
         )
       )
       .catch((error) => error.toString());

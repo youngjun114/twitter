@@ -48,7 +48,8 @@
 }
 
 .btn_edit,
-.btn_delete {
+.btn_delete,
+.btn_close {
   background-color: transparent;
 }
 

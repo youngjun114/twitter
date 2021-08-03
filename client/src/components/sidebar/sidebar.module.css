@@ -40,3 +40,7 @@
   font-size: 2rem;
   padding: 0 1em;
 }
+
+.log_out:hover {
+  background-color: var(--color-red-button-hover);
+}
