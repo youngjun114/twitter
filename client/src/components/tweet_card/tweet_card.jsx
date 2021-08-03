@@ -1,7 +1,8 @@
 import React, { memo, useState } from 'react';
-import moment from 'moment';
-import styles from './tweet_card.module.css';
 import { RiDeleteBin6Line, RiEdit2Line, RiCloseFill } from 'react-icons/ri';
+import moment from 'moment';
+import { Link, useHistory } from 'react-router-dom';
+import styles from './tweet_card.module.css';
 import Avatar from '../avatar/avatar';
 import TweetEditForm from '../tweet_edit_form/tweet_edit_form';
 
@@ -9,6 +10,7 @@ const TweetCard = memo(({ tweet, isAuthor, onDelete, onUpdate }) => {
   const { id, username, name, url, text, createdAt } = tweet;
   const [edit, setEdit] = useState(false);
   const formattedCreatedAt = moment(createdAt).fromNow();
+  const history = useHistory();
 
   const handleDelete = () => {
     if (window.confirm('Do you want to delete the post?')) {
@@ -20,15 +22,18 @@ const TweetCard = memo(({ tweet, isAuthor, onDelete, onUpdate }) => {
     setEdit((edit) => !edit);
   };
 
+  const onClickUsername = () => {
+    history.push(`/${username}`);
+  };
+
   return (
     <section className={styles.container}>
       <Avatar url={url} />
       <div className={styles.content}>
         <div className={styles.header}>
           <h2 className={styles.name}>{name}</h2>
-          <span
-            className={styles.username}
-          >{`@${username} • ${formattedCreatedAt}`}</span>
+          <Link className={styles.username}>{`@${username}`}</Link>
+          <span className={styles.time_stamp}>{`•${formattedCreatedAt}`}</span>
           {isAuthor && (
             <div className={styles.buttons}>
               {!edit && (

@@ -2,13 +2,11 @@ import React, { memo, useState, useEffect } from 'react';
 import Banner from '../banner/banner';
 import TweetCard from '../tweet_card/tweet_card';
 import TweetAddForm from '../tweet_add_form/tweet_add_form';
-import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../context/auth_context';
 
 const Tweets = memo(({ tweetService, username }) => {
   const [tweets, setTweets] = useState([]);
   const [error, setError] = useState('');
-  const history = useHistory();
   const { user } = useAuth();
 
   useEffect(() => {

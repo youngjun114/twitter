@@ -1,8 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
 import Tweets from '../../components/tweets/tweets';
+import TweetsByUsername from '../../components/tweets_by_username/tweets_by_username';
 import { useAuth } from '../../context/auth_context';
 import styles from './home_page.module.css';
 
@@ -26,7 +27,14 @@ const HomePage = ({ tweetService }) => {
         <div className={styles.header}>
           <Header username={user.username} handleLogOut={handleLogOut} />
         </div>
-        <Tweets tweetService={tweetService} />
+        <Switch>
+          <Route exact path='/'>
+            <Tweets tweetService={tweetService} />
+          </Route>
+          <Route path='/:username'>
+            <TweetsByUsername tweetService={tweetService} />
+          </Route>
+        </Switch>
       </div>
       <div className={styles.right}></div>
     </div>

@@ -9,14 +9,14 @@ const Sidebar = memo(({ handleLogOut }) => {
     <>
       <ul className={styles.sidebar_container}>
         <li>
-          <Link to='/home' className={styles.sidebar_item}>
+          <Link to='/' className={styles.sidebar_item}>
             <FaTwitter
               className={`${styles.sidebar_icon} ${styles.sidebar_logo}`}
             />
           </Link>
         </li>
         <li>
-          <NavLink to='/home' className={styles.sidebar_item}>
+          <NavLink to='/' className={styles.sidebar_item}>
             <FaHome className={styles.sidebar_icon} />
             <span className={styles.sidebar_title}>Home</span>
           </NavLink>

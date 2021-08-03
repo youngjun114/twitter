@@ -28,11 +28,16 @@
 .name {
   display: inline-block;
   font-size: 1.6rem;
+  margin-right: 0.25em;
 }
 
-.username {
+.username,
+.time_stamp {
   font-size: 1.4rem;
-  margin-left: 0.25em;
+}
+
+.username:hover {
+  color: var(--color-primary-blue);
 }
 
 .text {
