@@ -33,11 +33,6 @@ const Sidebar = memo(({ handleLogOut }) => {
             <span className={styles.sidebar_title}>Account</span>
           </NavLink>
         </li>
-        <li>
-          <button className={styles.log_out} onClick={handleLogOut}>
-            Log Out
-          </button>
-        </li>
       </ul>
     </>
   );

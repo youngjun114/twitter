@@ -5,9 +5,10 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  padding-right: 24px;
+  padding-right: 0.5em;
   color: var(--color-primary-black);
   transform: translateX(-100%);
+  gap: 2em;
 }
 
 .sidebar_icon {
@@ -23,6 +24,12 @@
   width: 100%;
   display: flex;
   align-items: center;
+  padding: 0 1em;
+}
+
+.sidebar_item:hover {
+  background-color: var(--color-sidebar-item-hover);
+  border-radius: 25px;
 }
 
 .sidebar_title {
@@ -31,16 +38,11 @@
   font-size: 2rem;
 }
 
-.log_out {
-  background-color: var(--color-secondary-red);
-  color: var(--color-primary-white);
-  height: calc(var(--sidebar-item-height) * 0.75);
-  width: 100%;
-  border-radius: 25px;
-  font-size: 2rem;
-  padding: 0 1em;
-}
-
-.log_out:hover {
-  background-color: var(--color-red-button-hover);
+@media (max-width: 1024px) {
+  .sidebar_container {
+    padding-right: 0px;
+  }
+  .sidebar_title {
+    display: none;
+  }
 }

@@ -16,3 +16,17 @@
   font-size: 1.6rem;
   color: var(--color-primary-blue);
 }
+
+.header_right {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.button {
+  color: var(--color-primary-white);
+  background-color: var(--color-secondary-red);
+  border-radius: 25px;
+  padding: 0.75em 1.25em;
+}
+

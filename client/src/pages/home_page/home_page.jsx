@@ -20,11 +20,11 @@ const HomePage = ({ tweetService }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.left}>
-        <Sidebar handleLogOut={handleLogOut} />
+        <Sidebar />
       </div>
       <div className={styles.center}>
         <div className={styles.header}>
-          <Header username={user.username} />
+          <Header username={user.username} handleLogOut={handleLogOut} />
         </div>
         <Tweets tweetService={tweetService} />
       </div>

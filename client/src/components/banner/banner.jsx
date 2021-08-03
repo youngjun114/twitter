@@ -4,9 +4,13 @@ import styles from './banner.module.css';
 const Banner = memo(({ text, isAlert }) => (
   <>
     {text && (
-      <p className={isAlert ? styles.banner_red : styles.banner_green}>
-        {text}
-      </p>
+      <div
+        className={`${styles.banner} ${
+          isAlert ? styles.banner_red : styles.banner_green
+        }`}
+      >
+        <h1 className={styles.disc}>{text}</h1>
+      </div>
     )}
   </>
 ));
