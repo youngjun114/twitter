@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './avatar.module.css';
 
 const Avatar = ({ url }) => {

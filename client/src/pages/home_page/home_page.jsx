@@ -14,7 +14,7 @@ const HomePage = ({ tweetService }) => {
   const handleLogOut = () => {
     if (window.confirm('Do you want to log out?')) {
       logOut();
-      history.push('/');
+      history.push('/home');
     }
   };
 

@@ -5,3 +5,9 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+@media (max-width: 480px) {
+  .avatar {
+    margin: 0 0.5em;
+  }
+}

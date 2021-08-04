@@ -22,18 +22,21 @@ const TweetCard = memo(({ tweet, isAuthor, onDelete, onUpdate }) => {
     setEdit((edit) => !edit);
   };
 
-  const onClickUsername = () => {
-    history.push(`/${username}`);
-  };
-
   return (
     <section className={styles.container}>
       <Avatar url={url} />
       <div className={styles.content}>
         <div className={styles.header}>
-          <h2 className={styles.name}>{name}</h2>
-          <Link className={styles.username}>{`@${username}`}</Link>
-          <span className={styles.time_stamp}>{`•${formattedCreatedAt}`}</span>
+          <div className={styles.header_left}>
+            <h2 className={styles.name}>{name}</h2>
+            <span className={styles.time_stamp}>
+              <Link
+                to={`/home/${username}`}
+                className={styles.username}
+              >{`@${username}`}</Link>
+              {`•${formattedCreatedAt}`}
+            </span>
+          </div>
           {isAuthor && (
             <div className={styles.buttons}>
               {!edit && (

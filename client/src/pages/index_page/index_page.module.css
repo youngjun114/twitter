@@ -1,70 +1,86 @@
 @import '../../style/color.css';
 
 .background {
-  background-color: var(--color-primary-blue);
   min-width: 100vw;
   min-height: 100vh;
-  color: var(--color-primary-white);
+  color: var(--color-primary-black);
   display: flex;
 }
 
-.wrapper {
-  margin: auto;
+.left {
   display: flex;
+  flex-basis: 50%;
+  background-color: var(--color-primary-blue);
 }
 
 .logo {
-  object-fit: cover;
-  height: 36rem;
+  object-fit: contain;
+  max-width: 240px;
+  width: 100%;
+  margin: auto;
 }
 
-.content {
-  height: 40rem;
-  margin-left: 7.5em;
+.right {
+  flex-basis: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .title {
-  font-size: 10rem;
+  font-size: 8rem;
+  width: 100%;
 }
 
-.sub_title {
-  font-size: 7.5rem;
+.slogan {
+  font-size: 4rem;
+  width: 100%;
 }
 
-.buttons {
-  display: flex;
-  margin-top: 5em;
-}
-
-.login,
-.signup {
-  width: 20rem;
-  height: 7rem;
+.button {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-right: 2em;
-  padding: 0 1em;
-  border-radius: 20px;
+  padding: 0 2em;
+  border-radius: 10px;
   color: var(--color-primary-white);
+  margin-top: 0.75em;
   text-align: center;
   line-height: 7rem;
-}
-
-.login {
   background-color: hsl(43, 89%, 53%);
 }
 
-.signup {
-  background-color: hsl(23, 89%, 53%);
-}
-
-.login:hover {
+.button:hover {
   background-color: hsl(43, 89%, 60%);
 }
 
-.signup:hover {
-  background-color: hsl(23, 89%, 60%);
+@media (max-width: 480px) {
+  .background {
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-primary-blue);
+    color: var(--color-primary-white);
+  }
+  .right {
+    max-width: 240px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .logo {
+    max-width: 175px;
+  }
+
+  .wrapper {
+    align-items: center;
+  }
 }

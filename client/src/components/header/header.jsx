@@ -6,7 +6,7 @@ const Header = memo(({ username, handleLogOut }) => {
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>
-        <Link to='/'>Home</Link>
+        <Link to='/home'>Home</Link>
       </h1>
       <div className={styles.header_right}>
         <div className={styles.username}>@{username}</div>
