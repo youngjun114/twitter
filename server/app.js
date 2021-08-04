@@ -11,9 +11,14 @@ import { connectDB } from './database/database.js';
 
 const app = express();
 
+const corsOption = {
+  origin: config.cors.allowedOrigin,
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOption));
 app.use(morgan('tiny'));
 
 app.use('/tweets', tweetsRouter);
@@ -31,7 +36,8 @@ app.use((error, req, res, next) => {
 
 connectDB()
   .then(() => {
-    const server = app.listen(config.host.port);
+    console.log(`Server is started...  ${new Date()}`);
+    const server = app.listen(config.port);
     initSocket(server);
   })
   .catch(console.error);
