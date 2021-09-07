@@ -13,7 +13,9 @@
   --color-blue-button-hover: hsl(203, 89%, 40%);
   --color-dark-gray-button-hover: hsl(207, 14%, 60%);
   --color-red-button-hover: hsl(3, 89%, 40%);
-  --color-green-button-hover:  hsl(131, 54%, 30%);
+  --color-primary-blue-hover-light: hsl(203, 89%, 70%);
+
+  --color-green-button-hover: hsl(131, 54%, 30%);
 
   --color-sidebar-item-hover: hsl(203, 89%, 90%);
   --color-card-border: rgb(239, 243, 244);
