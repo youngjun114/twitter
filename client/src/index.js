@@ -18,6 +18,8 @@ const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
 const authService = new AuthService(httpClient, tokenStorage);
 const tweetService = new TweetService(httpClient, tokenStorage, socketClient);
 
+console.log(`BaseURL from client is ${baseURL}`);
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
