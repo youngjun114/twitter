@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import styles from './sidebar.module.css';
-import { Link, NavLink } from 'react-router-dom';
-import { FaHome, FaSearch, FaTwitter } from 'react-icons/fa';
-import { RiAccountPinBoxFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import { FaTwitter } from 'react-icons/fa';
 
 const Sidebar = memo(() => {
   return (
@@ -14,24 +13,6 @@ const Sidebar = memo(() => {
               className={`${styles.sidebar_icon} ${styles.sidebar_logo}`}
             />
           </Link>
-        </li>
-        <li>
-          <NavLink to='/home' className={styles.sidebar_item}>
-            <FaHome className={styles.sidebar_icon} />
-            <span className={styles.sidebar_title}>Home</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/home' className={styles.sidebar_item}>
-            <FaSearch className={styles.sidebar_icon} />
-            <span className={styles.sidebar_title}>Search</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/home' className={styles.sidebar_item}>
-            <RiAccountPinBoxFill className={styles.sidebar_icon} />
-            <span className={styles.sidebar_title}>Account</span>
-          </NavLink>
         </li>
       </ul>
     </>
