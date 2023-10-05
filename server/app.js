@@ -37,6 +37,7 @@ app.use((error, req, res, next) => {
 connectDB()
   .then(() => {
     console.log(`Server is started...  ${new Date()}`);
+    console.log(`Allowed orgin is  ${config.cors.allowedOrigin}`);
     const server = app.listen(config.port);
     initSocket(server);
   })
